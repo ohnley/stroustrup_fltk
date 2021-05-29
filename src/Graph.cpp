@@ -642,8 +642,11 @@ Graph_lib::Point center(Graph_lib::Rectangle& r){
     return Graph_lib::Point{x,y};
 }
 
-
-Graph_lib::Point n(Graph_lib::Rectangle& r);
+Graph_lib::Point n(Graph_lib::Rectangle& r){
+    int x = r.point(0).x + (r.width() / 2);
+    int y = r.point(0).y;
+    return Graph_lib::Point{x,y};
+}
 Graph_lib::Point s(Graph_lib::Rectangle& r);
 Graph_lib::Point e(Graph_lib::Rectangle& r);
 Graph_lib::Point w(Graph_lib::Rectangle& r);

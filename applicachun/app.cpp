@@ -156,27 +156,37 @@ void ch13ex02(){
 }
 
 void ch13ex04(){
+
     Simple_window win (Point{100,100}, 1200, 800, "header");
 
     Graph_lib::Rectangle rec {Point{200,300}, Point{250,350}};
+    
+    
     rec.set_color(Color::red);
     win.attach(rec);
     
     // center of rectangle
     Graph_lib::Point center = Graph_lib::center(rec);
     Graph_lib::Mark centmark {center, 'c'};
-    // std::cout << center.x << " y: " << center.y << '\n';
     win.attach(centmark);
-    
-    
-    
     win.wait_for_button();
+
+    center = Graph_lib::n(rec);
+    Graph_lib::Mark north {center, 'n'};
+
+    win.attach(north);
+    // don't need to re-attach, it already knows to move it
+    centmark.move(100, 100); 
+
+    win.wait_for_button();
+
 }
 
+
 int main(){
-    using namespace Graph_lib; //our graphics facilities are in Graph_lib (defined in Graph.h)
-    
-    
+    using namespace Graph_lib; 
+    ch13ex04();
+
     
     return 0;
 }
