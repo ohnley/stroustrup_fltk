@@ -1,14 +1,14 @@
 
-//
 // This is a GUI support code to the chapters 12-16 of the book
 // "Programming -- Principles and Practice Using C++" by Bjarne Stroustrup
-//
 
 #include <FL/Fl_GIF_Image.H>
 #include <FL/Fl_JPEG_Image.H>
 #include "dummycmake/Graph.h"
-
 #include <iostream>
+
+// macro hack to get pi without importing stuff
+#define MY_PI_CONST     3.14159265358979323846
 
 //------------------------------------------------------------------------------
 
@@ -647,13 +647,33 @@ Graph_lib::Point n(Graph_lib::Rectangle& r){
     int y = r.point(0).y;
     return Graph_lib::Point{x,y};
 }
-Graph_lib::Point s(Graph_lib::Rectangle& r);
-Graph_lib::Point e(Graph_lib::Rectangle& r);
-Graph_lib::Point w(Graph_lib::Rectangle& r);
-Graph_lib::Point ne(Graph_lib::Rectangle& r);
-Graph_lib::Point se(Graph_lib::Rectangle& r);
-Graph_lib::Point nw(Graph_lib::Rectangle& r);
-Graph_lib::Point sw(Graph_lib::Rectangle& r);
+
+
+
+Regular_hexagon::Regular_hexagon(Graph_lib::Point center, int side_size){
+    if (side_size <= 0) error("invalid hexagon side size < 0");
+    add(Point{center.x + side_size, center.y}, 
+        Point{center.x + (int)(side_size * cos(60 * ((double) MY_PI_CONST/180))),
+              center.y + (int)(side_size * sin(60 * ((double) MY_PI_CONST/180)))});
+    add(Point{center.x + (int)(side_size * cos(60 * ((double) MY_PI_CONST/180))),
+              center.y + (int)(side_size * sin(60 * ((double) MY_PI_CONST/180)))},
+        Point{center.x - (int)(side_size * cos(60 * ((double) MY_PI_CONST/180))),
+              center.y + (int)(side_size * sin(60 * ((double) MY_PI_CONST/180)))});
+    add(Point{center.x - (int)(side_size * cos(60 * ((double) MY_PI_CONST/180))),
+              center.y + (int)(side_size * sin(60 * ((double) MY_PI_CONST/180)))},
+        Point{center.x - side_size,
+              center.y });
+    add(Point{center.x - side_size, center.y},
+        Point{center.x - (int)(side_size * cos(60 * ((double) MY_PI_CONST/180))),
+              center.y - (int)(side_size * sin(60 * ((double) MY_PI_CONST/180)))});
+    add(Point{center.x - (int)(side_size * cos(60 * ((double) MY_PI_CONST/180))),
+              center.y - (int)(side_size * sin(60 * ((double) MY_PI_CONST/180)))},
+        Point{center.x + (int)(side_size * cos(60 * ((double) MY_PI_CONST/180))),
+              center.y - (int)(side_size * sin(60 * ((double) MY_PI_CONST/180)))});
+    add(Point{center.x + (int)(side_size * cos(60 * ((double) MY_PI_CONST/180))),
+              center.y - (int)(side_size * sin(60 * ((double) MY_PI_CONST/180)))},
+        Point{center.x + side_size, center.y});
+}
 
 } // of namespace Graph_lib
 

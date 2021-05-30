@@ -443,13 +443,11 @@ struct Arrow : Line {
 
 Graph_lib::Point center(Graph_lib::Rectangle& r);
 Graph_lib::Point n(Graph_lib::Rectangle& r);
-Graph_lib::Point s(Graph_lib::Rectangle& r);
-Graph_lib::Point e(Graph_lib::Rectangle& r);
-Graph_lib::Point w(Graph_lib::Rectangle& r);
-Graph_lib::Point ne(Graph_lib::Rectangle& r);
-Graph_lib::Point se(Graph_lib::Rectangle& r);
-Graph_lib::Point nw(Graph_lib::Rectangle& r);
-Graph_lib::Point sw(Graph_lib::Rectangle& r);
+
+struct Regular_hexagon : Lines {
+    Regular_hexagon(Graph_lib::Point center, int side_size);
+};
+
 
 
 } // of namespace Graph_lib

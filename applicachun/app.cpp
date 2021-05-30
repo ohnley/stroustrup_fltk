@@ -2,6 +2,7 @@
 #include "dummycmake/Graph.h"
 // #include <vector>
 // #include <iostream>
+#define MY_PI_CONST  3.14159265358979323846
 
 void ex04(Simple_window& win){
     Graph_lib::Rectangle rect1{Point{100, 100},100,100};
@@ -175,17 +176,40 @@ void ch13ex04(){
     Graph_lib::Mark north {center, 'n'};
 
     win.attach(north);
+
     // don't need to re-attach, it already knows to move it
     centmark.move(100, 100); 
-
+   
     win.wait_for_button();
 
 }
 
+void ch13ex08(){
+    Simple_window win (Point{100,100}, 1200, 800, "hexagon example");
+
+    Graph_lib::Regular_hexagon rhex {Point{400, 400}, 100};
+    Graph_lib::Regular_hexagon ehex {Point{400, 572}, 100};
+    Graph_lib::Regular_hexagon ehex {Point{700, 572}, 100};
+    Graph_lib::Regular_hexagon qhex {Point{700, 400}, 100};
+    Graph_lib::Regular_hexagon shex {Point{100, 400}, 100};
+    
+    win.attach(rhex);
+    win.attach(ehex);
+    win.attach(qhex);
+    win.attach(shex);
+    win.wait_for_button();
+
+    while (true){
+        rhex.move(2,3);
+        win.wait_for_button();
+    }
+
+}
 
 int main(){
     using namespace Graph_lib; 
-    ch13ex04();
+    ch13ex08();
+    
 
     
     return 0;
