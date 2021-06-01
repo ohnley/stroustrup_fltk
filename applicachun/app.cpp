@@ -188,7 +188,7 @@ void ch13ex08(){
     Simple_window win (Point{100,100}, 1200, 800, "hexagon example");
 
     Graph_lib::Regular_hexagon rhex {Point{400, 400}, 100};
-    Graph_lib::Regular_hexagon ehex {Point{400, 572}, 100};
+    Graph_lib::Regular_hexagon zhex {Point{400, 572}, 100};
     Graph_lib::Regular_hexagon ehex {Point{700, 572}, 100};
     Graph_lib::Regular_hexagon qhex {Point{700, 400}, 100};
     Graph_lib::Regular_hexagon shex {Point{100, 400}, 100};
@@ -206,10 +206,26 @@ void ch13ex08(){
 
 }
 
-int main(){
-    using namespace Graph_lib; 
-    ch13ex08();
+void ch14ex(){
+    Graph_lib::Box b = {100, 200, 100, 200, 10};
+    Simple_window win (Point{100,100}, 1200, 800, "hexagon example");
+    Graph_lib::Immobile_Circle ic = {Point{100,200},200};
+    win.attach(ic);
+    win.attach(b);
+
+    win.wait_for_button();
+
+    // Graph_lib::Box bb = b;
     
+}
+int main(){
+    
+    using namespace Graph_lib; 
+    
+    ch14ex();
+
+
+
 
     
     return 0;

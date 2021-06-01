@@ -448,7 +448,14 @@ struct Regular_hexagon : Lines {
     Regular_hexagon(Graph_lib::Point center, int side_size);
 };
 
-
+class Immobile_Circle : public Circle {
+    public:
+        Immobile_Circle(Point p, int rr) : Circle(p, rr){}
+    
+    // disable the function of Circle by limiting its scope to within the class
+    private:
+        Circle::move;
+};
 
 } // of namespace Graph_lib
 
