@@ -218,6 +218,11 @@ void ch14ex(){
     // Graph_lib::Box bb = b;
     
 }
+
+void ch14ex03(){
+    // Graph_lib::Abstract_Class abc {10, 2.3};
+
+}
 int main(){
     
     using namespace Graph_lib; 

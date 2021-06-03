@@ -675,5 +675,56 @@ Regular_hexagon::Regular_hexagon(Graph_lib::Point center, int side_size){
         Point{center.x + side_size, center.y});
 }
 
+
+Octagon::Octagon(Graph_lib::Point p, int s) : size(s)
+{
+    int i = 8;
+    add(p);
+    while (i--) add(Point());
+    set_size(size);
+}
+
+void Octagon::set_size(int new_size)
+{
+    size = new_size;
+    Graph_lib::Point p = point(0);
+    for (int i = 0; i < 8; i++){
+
+        double theta = 22.5 + (45 * i) * (MY_PI_CONST/180.);
+        int dx = new_size * cos(theta);
+        int dy = new_size * sin(theta);
+        set_point(i, Graph_lib::Point{p.x + dx, p.y + dy});
+    }
+}
+
+void Octagon::move(int dx, int dy){
+    for (int i = 0; i < number_of_points(); i++){
+        int n_x = point(i).x + dx;
+        int n_y = point(i).y + dy;
+        set_point(i, Graph_lib::Point{n_x, n_y});
+    }
+}
+
+void Octagon::draw_lines() const
+{
+    if (fill_color().visibility()) {
+        fl_color(fill_color().as_int());
+        fl_begin_complex_polygon();
+        for (int i = 1; i<number_of_points(); ++i)  // point(0) is center
+            fl_vertex(point(i).x,point(i).y);
+        fl_end_complex_polygon();
+        fl_color(color().as_int());    // reset color
+    }
+
+    if (color().visibility()) {
+        for (int i = 1; i<number_of_points()-1; ++i)
+            fl_line(point(i).x,point(i).y,point(i+1).x,point(i+1).y);
+        fl_line(point(number_of_points()-1).x,
+            point(number_of_points()-1).y,
+            point(1).x,
+            point(1).y);   // close polygon
+    }
+}
+
 } // of namespace Graph_lib
 

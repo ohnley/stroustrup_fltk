@@ -457,6 +457,26 @@ class Immobile_Circle : public Circle {
         Circle::move;
 };
 
+// abstract class have protected constructors
+class Abstract_Class {
+    public:
+        int some_public;
+    protected:
+        Abstract_Class(int x, double mult){some_public = mult*x;};
+
+};
+
+class Octagon : public Shape{
+    public:
+        Octagon(Point p, int size);
+    protected:
+        void move(int dx, int dy);
+        void set_size(int r);
+        void draw_lines() const;
+    private:
+        int size;
+    
+};
 } // of namespace Graph_lib
 
 #endif
