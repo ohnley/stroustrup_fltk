@@ -51,6 +51,14 @@ void Window::attach(Widget& w)
     end();           // FTLK: stop attaching new Fl_Wigets to this window
 }
 
+
+void Window::attach(Group& g)
+{
+    for (int i = 0; i < g.number_shapes(); i++){
+        shapes.push_back(g.get_shape(i));
+    }
+}
+
 //------------------------------------------------------------------------------
 
 void Window::detach(Widget& b)

@@ -209,7 +209,9 @@ void ch13ex08(){
 void ch14ex(){
     Graph_lib::Box b = {100, 200, 100, 200, 10};
     Simple_window win (Point{100,100}, 1200, 800, "hexagon example");
+    b.set_color(Color::blue);
     Graph_lib::Immobile_Circle ic = {Point{100,200},200};
+    ic.set_color(Color::blue);
     win.attach(ic);
     win.attach(b);
 

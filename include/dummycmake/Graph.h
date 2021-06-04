@@ -477,6 +477,36 @@ class Octagon : public Shape{
         int size;
     
 };
+
+
+// when you attach a group to a window
+// it gets narrowed down to a Shape
+// so it loses its list of shapes
+// so we need to modify the window class to handle groups
+class Group : public Shape {
+    public:
+        void add_shape(Shape& s) {shapes.push_back(s);}
+        void move(int index, int dx, int dy);
+        void move(int dx, int dy);
+        void set_style(Line_style sty);
+        void set_color(Color col);
+        void set_fill_color(Color col);
+        void draw();
+        int number_shapes() {return shapes.size();}
+        Shape* get_shape(int i) {return &shapes[i];}
+    private:
+        Vector_ref<Shape> shapes;
+
+        // prevent the child class Group from accessing these functions 
+        Shape::number_of_points;        
+        Shape::point;
+        Shape::add;
+        Shape::set_point;
+
+};
+
+
+
 } // of namespace Graph_lib
 
 #endif

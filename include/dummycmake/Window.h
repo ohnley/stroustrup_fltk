@@ -20,6 +20,7 @@ namespace Graph_lib
 {
     class Shape;   // "forward declare" Shape
     class Widget;
+    class Group;
 
 //------------------------------------------------------------------------------
 
@@ -40,6 +41,7 @@ namespace Graph_lib
         void set_label(const string& s) { copy_label(s.c_str()); }
 
         void attach(Shape& s) { shapes.push_back(&s); }
+        void attach(Group& g);
         void attach(Widget&);
 
         void detach(Shape& s);     // remove s from shapes 

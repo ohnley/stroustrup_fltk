@@ -726,5 +726,43 @@ void Octagon::draw_lines() const
     }
 }
 
+void Group::move(int index, int dx, int dy )  {
+    shapes[index].move(dx, dy);
+}
+
+void Group::move(int dx, int dy){
+    for (int i = 0; i < shapes.size(); i++){
+        shapes[i].move(dx, dy);
+    }
+}
+
+void Group::set_color(Color col){
+    Shape::set_color(col);
+    for (int i = 0; i < shapes.size(); i++){
+        shapes[i].set_color(col);
+    }
+}
+
+void Group::draw(){
+    for (int i = 0; i < shapes.size(); i++){
+        shapes[i].draw();
+    }
+}
+
+void Group::set_style(Line_style sty)
+{
+    Shape::set_style(sty);
+    for (int i = 0; i<shapes.size(); ++i)
+        shapes[i].set_style(sty);
+}
+
+void Group::set_fill_color(Color col)
+{
+    Shape::set_fill_color(col);
+    for (int i = 0; i<shapes.size(); ++i)
+        shapes[i].set_fill_color(col);
+}
+
+
 } // of namespace Graph_lib
 
