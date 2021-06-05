@@ -463,7 +463,7 @@ void Axis::move(int dx, int dy)
 //------------------------------------------------------------------------------
 
 Function::Function(Fct f, double r1, double r2, Point xy,
-                   int count, double xscale, double yscale)
+                   int count, double xscale, double yscale, double filler)
 // graph f(x) for x in [r1:r2) using count line segments with (0,0) displayed at xy
 // x coordinates are scaled by xscale and y coordinates scaled by yscale
 {
