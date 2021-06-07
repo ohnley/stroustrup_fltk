@@ -10,7 +10,7 @@
 #include <FL/Fl_Image.H>
 #include "Point.h"
 #include "std_lib_facilities.h"
-#include <functional>
+#include <functional> 
 
 namespace Graph_lib {
 
@@ -505,7 +505,25 @@ class Group : public Shape {
 
 };
 
+struct Distribution {
+    int year, young, middle, old;
+};
 
+// istream& operator>>(istream& is, Distribution& d){
+//     char ch1 = 0;
+//     char ch2 = 0;
+//     char ch3 = 0;
+//     Distribution dd;
+//     if (is >> ch1 >> dd.year >> ch2 >> dd.young >> dd.middle >> dd.old >> ch3) {
+//         if (ch1 != '(' || ch2 != ':' || ch3 != ')'){
+//             is.clear(ios_base::failbit);
+//             return is;
+//         }
+//     }
+//     else return is;
+//     d = dd;
+//     return is;
+// }
 
 } // of namespace Graph_lib
 

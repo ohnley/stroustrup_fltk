@@ -1,6 +1,6 @@
 add_executable(app app.cpp)
 add_executable(ch14ex09 ch14ex09.cpp)
-add_executable(ch15 ch15.cpp)
+add_executable(ch15 ch15drill.cpp)
 
 # connect this to private dummy library
 # this works since in the project level CMakeLists file, we added the 
