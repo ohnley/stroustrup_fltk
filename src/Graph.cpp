@@ -764,5 +764,18 @@ void Group::set_fill_color(Color col)
 }
 
 
+Bar::Bar(){
+    data = {};
+}
+
+void Bar::set_bar(int bar_num, double new_height){
+    if (bar_num >= data.size()) error("Out of bounds: " + bar_num);
+    data[bar_num] = new_height;
+}
+
+void Bar::draw_lines() const {
+    
+}
+
 } // of namespace Graph_lib
 

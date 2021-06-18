@@ -509,21 +509,18 @@ struct Distribution {
     int year, young, middle, old;
 };
 
-// istream& operator>>(istream& is, Distribution& d){
-//     char ch1 = 0;
-//     char ch2 = 0;
-//     char ch3 = 0;
-//     Distribution dd;
-//     if (is >> ch1 >> dd.year >> ch2 >> dd.young >> dd.middle >> dd.old >> ch3) {
-//         if (ch1 != '(' || ch2 != ':' || ch3 != ')'){
-//             is.clear(ios_base::failbit);
-//             return is;
-//         }
-//     }
-//     else return is;
-//     d = dd;
-//     return is;
-// }
+
+class Bar : public Shape {
+    public:
+        Bar(vector<double> b) : data(b) {}
+        Bar();
+        void set_bar(int bar_num, double new_height);
+    protected:
+        virtual void draw_lines() const;
+    private:
+        vector<double> data;
+
+};
 
 } // of namespace Graph_lib
 
