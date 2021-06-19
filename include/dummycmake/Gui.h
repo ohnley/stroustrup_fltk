@@ -115,12 +115,18 @@ struct Menu : Widget {
 
 };
 
+
+
+
+
+
 //------------------------------------------------------------------------------
 
 
 struct Lines_window : Window {
     Lines_window(Point xy, int w, int h, const string& title);
     Open_polyline lines;
+    Menu color_menu;
 
     private:
         Button next_but;
@@ -131,6 +137,12 @@ struct Lines_window : Window {
 
         void next();
         void quit();
+
+        void red_press() {change(Color::red);}
+        void black_press() {change(Color::black);}
+        void blue_press() {change(Color::blue);}
+
+        void change(Color c){lines.set_color(c); redraw();}
 
 };
 

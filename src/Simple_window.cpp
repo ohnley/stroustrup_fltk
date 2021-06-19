@@ -42,6 +42,7 @@ void Simple_window::cb_next(Address, Address pw)
 void Simple_window::next()
 {
     button_pushed = true;
+    std::cout << "pushed next";
 }
 
 //------------------------------------------------------------------------------

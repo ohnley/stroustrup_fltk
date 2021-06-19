@@ -148,14 +148,23 @@ Lines_window::Lines_window(Point xy, int w, int h, const string& title) :
 
     next_x{Point{x_max() - 310,0}, 50, 20, "next x:"},
     next_y{Point{x_max() - 210,0}, 50, 20, "next y:"},
-    xy_out{Point{100,0}, 100, 20, "current (x,y):"}
+    xy_out{Point{100,0}, 100, 20, "current (x,y):"},
+    color_menu{Point{x_max() - 70, 40}, 70, 20, Menu::vertical, "color"}
     {
+    lines.set_color(Color::black);
     attach(next_but);
     attach(quit_but);
     attach(next_x);
     attach(next_y);
     attach(xy_out);
     attach(lines);
+    color_menu.attach(new Button{Point{0,0},0,0,"red",
+    [](Address, Address pw) {reference_to<Lines_window>(pw).red_press();}});
+    color_menu.attach(new Button{Point{0,0},0,0,"blue",
+    [](Address, Address pw) {reference_to<Lines_window>(pw).blue_press();}});
+    color_menu.attach(new Button{Point{0,0},0,0,"black",
+    [](Address, Address pw) {reference_to<Lines_window>(pw).black_press();}});
+    attach(color_menu);
     }
 
 
@@ -169,8 +178,10 @@ void Lines_window::next(){
     lines.add(Point{x,y});
 
     ostringstream ss;
-    ss << '(' << x << ',' << ')';
+    ss << '(' << x << ',' << y <<')';
     xy_out.put(ss.str());
+
+    redraw();
 
 }
 
