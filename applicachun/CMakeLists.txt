@@ -1,4 +1,4 @@
-add_executable(app app.cpp)
+add_executable(app ch16.cpp)
 add_executable(ch14ex09 ch14ex09.cpp)
 add_executable(ch15 ch15drill.cpp)
 

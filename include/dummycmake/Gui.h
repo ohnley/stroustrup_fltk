@@ -117,6 +117,25 @@ struct Menu : Widget {
 
 //------------------------------------------------------------------------------
 
+
+struct Lines_window : Window {
+    Lines_window(Point xy, int w, int h, const string& title);
+    Open_polyline lines;
+
+    private:
+        Button next_but;
+        Button quit_but;
+        In_box next_x;
+        In_box next_y;
+        Out_box xy_out;
+
+        void next();
+        void quit();
+
+};
+
+
+
 } // of namespace Graph_lib
 
 #endif // GUI_GUARD
